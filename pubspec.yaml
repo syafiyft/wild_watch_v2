@@ -1,0 +1,42 @@
+name: my_flutter_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Adds Cupertino icons for iOS style widgets/icons
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Recommended lints to encourage good coding practices
+  flutter_lints: ^4.0.0
+
+flutter:
+
+  # Ensures that Material Icons font is included
+  uses-material-design: true
+
+  # Define your app's assets (images for avatar and animal photos)
+  assets:
+    - assets/avatar.jpg
+    - assets/birds.png
+    - assets/carnivore.png
+    - assets/herbivore.png
+    - assets/seafish.png
+    - assets/lion.jpg
+    - assets/koala.jpg
+    - assets/cheetah.jpg
+    - assets/elephant.jpg
+    - assets/tiger.jpg
+    - assets/panda.jpg
+    - assets/homewild.png
