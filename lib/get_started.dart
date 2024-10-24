@@ -86,7 +86,7 @@ class GetStartedScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             // Navigate to the SignUp screen
-                            Navigator.pushNamed(context, '/signup');
+                            Navigator.pushNamed(context, '/signin');
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF6EB0F4), // Light blue button color

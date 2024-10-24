@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'get_started.dart'; // Import the GetStartedScreen from another file
+import 'sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/get-started', // Set the initial route to GetStartedScreen
       routes: {
         '/get-started': (context) => const GetStartedScreen(), // Connected to the file
-        '/signup': (context) => const SignUpScreen(),
+        '/signin': (context) => SignInScreen(), //route to sign in
         '/home': (context) => const MyHomePage(), // Navigate to MyHomePage after sign up
       },
     );
