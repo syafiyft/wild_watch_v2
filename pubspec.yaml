@@ -13,13 +13,14 @@ dependencies:
 
   # Adds Cupertino icons for iOS style widgets/icons
   cupertino_icons: ^1.0.8
+  icons_plus: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   # Recommended lints to encourage good coding practices
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 flutter:
 
