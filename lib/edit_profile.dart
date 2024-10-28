@@ -9,9 +9,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEAF7FA), // Background color
+      backgroundColor: Color(0xFFEAF7FA),
       appBar: AppBar(
-        backgroundColor: Color(0xFFEAF7FA), // Match background color
+        backgroundColor: Color(0xFFEAF7FA),
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -39,7 +39,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    backgroundImage: AssetImage('assets/avatar.png'), // Replace with your image path
+                    backgroundImage: AssetImage('assets/avatar.jpg'),
                   ),
                   Positioned(
                     bottom: 0,
@@ -67,6 +67,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               SizedBox(height: 15),
               _buildEditableField('Birthday', '11/09/24'),
+              SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle button press
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown.withOpacity(0.9), // Corrected parameter
+                  foregroundColor: Colors.white, // Text color
+                ),
+                child: const Text('Save Changes'),
+              ),
             ],
           ),
         ),
