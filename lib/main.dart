@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Lexend',
       ),
       initialRoute: '/get-started', // Set the initial route to GetStartedScreen
       routes: {
