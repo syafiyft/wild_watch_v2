@@ -96,7 +96,7 @@ class GetStartedScreen extends StatelessWidget {
                             ),
                           ),
                           child: const Text(
-                            'Get Started',
+                            "Let's Start",
                             style: TextStyle(
                               fontSize: 16, // Adjusted font size
                               fontWeight: FontWeight.bold, // Make the text bold
