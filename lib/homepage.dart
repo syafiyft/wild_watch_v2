@@ -23,7 +23,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   height: 65,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black, // Updated navigation bar color
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
@@ -36,8 +36,8 @@ class MyHomePage extends StatelessWidget {
                     currentIndex: 0,
                     backgroundColor: Colors.transparent,
                     elevation: 0,
-                    selectedItemColor: Colors.brown.withOpacity(0.9),
-                    unselectedItemColor: Colors.black.withOpacity(0.9),
+                    selectedItemColor: Colors.redAccent.withOpacity(0.9),
+                    unselectedItemColor: Colors.white.withOpacity(0.9),
                     selectedFontSize: 14,
                     unselectedFontSize: 12,
                     iconSize: 24,
@@ -123,20 +123,34 @@ class WelcomeBanner extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Welcome, Syafiy!',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              RichText(
+                text: const TextSpan(
+                  text: 'Welcome, ',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'Syafiy!',
+                      style: TextStyle(
+                        color: Colors.red, // Updated username color to red
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text(
+              const Text(
                 'Discover the wilderness today!',
                 style: TextStyle(fontSize: 14),
               ),
-              SizedBox(height: 16),
-              YourHistoryCard(),
+              const SizedBox(height: 16),
+              const YourHistoryCard(),
             ],
           ),
         ),
