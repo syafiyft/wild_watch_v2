@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // For SystemUiOverlayStyle
-//import 'edit_profile.dart';
+import 'scan.dart'; // Import the ScanScreen file
+import 'edit_profile.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Ensure the status bar icons match the background
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // Fully transparent to match the background
-      statusBarIconBrightness: Brightness.dark, // Dark icons for light background
-      statusBarBrightness: Brightness.light, // For iOS devices
-    ));
-
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -62,7 +55,17 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ],
                     onTap: (index) {
-                      // Handle bottom navigation tap
+                      if (index == 1) {
+                        // Navigate to ScanScreen when the Scan button is clicked
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ScanScreen()),
+                        );
+                      } else if (index == 0) {
+                        // Navigate back to HomeScreen (or handle Home tap if needed)
+                      } else if (index == 2) {
+                        // Add logic for Discover button if necessary
+                      }
                     },
                   ),
                 ),
