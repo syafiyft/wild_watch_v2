@@ -21,7 +21,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
 
     // Initialize AnimationController and Animation
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
       vsync: this,
     )..repeat(reverse: true); // Repeats the animation up and down
 
@@ -95,7 +95,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
                       style: TextStyle(
                         fontFamily: 'Minecraft', // Use the Minecraft font
                         fontSize: 15, // Updated font size
-                        color: Colors.grey.withOpacity(0.7), // Gray color with 59% opacity
+                        color: Colors.grey.withOpacity(0.9), // Gray color with 59% opacity
                       ),
                     ),
                   );

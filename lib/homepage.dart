@@ -97,67 +97,43 @@ class WelcomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          top: 0,
-          right: 16,
-          child: GestureDetector(
-            onTap: () {
-              // Navigate to the EditProfileScreen
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EditProfileScreen()),
-              );
-            },
-            child: ClipOval(
-              child: SizedBox(
-                width: 60,
-                height: 60,
-                child: Image(
-                  image: AssetImage('assets/avatar.jpg'),
-                  fit: BoxFit.cover,
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RichText(
+            text: const TextSpan(
+              text: 'Welcome, ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
+              children: [
+                TextSpan(
+                  text: 'Syafiy!',
+                  style: TextStyle(
+                    color: Colors.red, // Username in red
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: const TextSpan(
-                  text: 'Welcome, ',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: 'Syafiy!',
-                      style: TextStyle(
-                        color: Colors.red, // Updated username color to red
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Text(
-                'Discover the wilderness today!',
-                style: TextStyle(fontSize: 14),
-              ),
-              const SizedBox(height: 16),
-              const YourHistoryCard(),
-            ],
+          const Text(
+            'Discover the wilderness today!',
+            style: TextStyle(fontSize: 14),
           ),
-        ),
-      ],
+          const SizedBox(height: 16),
+          const YourHistoryCard(),
+        ],
+      ),
     );
   }
 }
+
+
+
 
 class YourHistoryCard extends StatelessWidget {
   const YourHistoryCard({super.key});
@@ -185,6 +161,7 @@ class YourHistoryCard extends StatelessWidget {
                   Text(
                     'Your History',
                     style: TextStyle(
+                        decoration: TextDecoration.underline,
                         fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   SizedBox(height: 8),
@@ -205,7 +182,7 @@ class YourHistoryCard extends StatelessWidget {
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.green,
                 ),
-                child: const Text('Saved'),
+                child: const Text('Check'),
               ),
             ],
           ),
@@ -242,10 +219,10 @@ class DiscoverSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            DiscoverCard(label: 'Birds', iconPath: 'assets/birds.png', backgroundColor: Color(0xFFFAD4D4)),
-            DiscoverCard(label: 'Carnivore', iconPath: 'assets/carnivore.png', backgroundColor: Color(0xFFFFDDA1)),
-            DiscoverCard(label: 'Herbivore', iconPath: 'assets/herbivore.png', backgroundColor: Color(0xFFD0FFD6)),
-            DiscoverCard(label: 'Sea Fish', iconPath: 'assets/seafish.png', backgroundColor: Color(0xFFD6F3FF)),
+            DiscoverCard(label: 'Birds', iconPath: 'assets/birds.png', backgroundColor: Color(0xFFFF2257)),
+            DiscoverCard(label: 'Carnivore', iconPath: 'assets/carnivore.png', backgroundColor: Color(0xFFFFCF23)),
+            DiscoverCard(label: 'Herbivore', iconPath: 'assets/herbivore.png', backgroundColor: Color(0xFFA3EE89)),
+            DiscoverCard(label: 'Sea Fish', iconPath: 'assets/seafish.png', backgroundColor: Color(0xFF1AACFF)),
           ],
         ),
       ],
