@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'get_started.dart'; // Import the GetStartedScreen from another file
+import 'get_started.dart';
 import 'sign_in.dart';
-import 'homepage.dart'; // Import the HomePage from homepage.dart
+import 'homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Lexend',
+        fontFamily: 'Minecraft', // Apply the Minecraft font globally
       ),
       initialRoute: '/get-started', // Set the initial route to GetStartedScreen
       routes: {
-        '/get-started': (context) => const GetStartedScreen(), // Connected to the file
-        '/signin': (context) => SignInScreen(), //route to sign in
-        '/home': (context) => const MyHomePage(), // Navigate to MyHomePage after sign up
+        '/get-started': (context) => const GetStartedScreen(),
+        '/signin': (context) => SignInScreen(),
+        '/home': (context) => const MyHomePage(),
       },
     );
   }

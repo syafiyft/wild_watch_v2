@@ -8,6 +8,9 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+
+  audioplayers: ^6.1.0
+
   flutter:
     sdk: flutter
   smooth_page_indicator: ^1.2.0+3
@@ -29,13 +32,9 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Lexend
+    - family: Minecraft
       fonts:
-        - asset: assets/fonts/Lexend[wght].ttf
-    - family: ZillaSlab
-      fonts:
-        - asset: assets/fonts/ZillaSlab-Regular.ttf
-        - asset: assets/fonts/ZillaSlab-Bold.ttf
+        - asset: assets/fonts/Minecraft.ttf
 
   # Define your app's assets (images for avatar and animal photos)
   assets:
@@ -57,3 +56,6 @@ flutter:
     - assets/cartoon2.jpeg
     - assets/cartoon3.jpeg
     - assets/getstart1.jpg
+    - assets/wildlogo.png
+    - assets/audio/theme_song.mp3
+    - assets/audio/click_effect2.mp3

@@ -128,7 +128,7 @@ class WelcomeBanner extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Welcome, Syafiy',
+                'Welcome, Syafiy!',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
@@ -157,7 +157,7 @@ class YourHistoryCard extends StatelessWidget {
       child: Container(
         width: screenWidth * 0.9,
         decoration: BoxDecoration(
-          color: Colors.indigoAccent,
+          color: Color(0xFFE3FF63),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -171,17 +171,17 @@ class YourHistoryCard extends StatelessWidget {
                   Text(
                     'Your History',
                     style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   SizedBox(height: 8),
                   Text(
                     '3 new species discovered!',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                   SizedBox(height: 8),
                   Text(
                     '3 new different regions',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ],
               ),

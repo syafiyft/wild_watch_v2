@@ -1,117 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'audio_manager.dart';
 
-class GetStartedScreen extends StatelessWidget {
-  const GetStartedScreen({super.key});
+class GetStartedScreen extends StatefulWidget {
+  const GetStartedScreen({Key? key}) : super(key: key);
+
+  @override
+  State<GetStartedScreen> createState() => _GetStartedScreenState();
+}
+
+class _GetStartedScreenState extends State<GetStartedScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  late AudioPlayer _themeAudioPlayer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize AnimationController and Animation
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true); // Repeats the animation up and down
+
+    _animation = Tween<double>(begin: 0, end: 10).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    // Initialize the theme song audio player
+    _themeAudioPlayer = AudioPlayer();
+    _playThemeSong();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // Dispose animation controller
+    _stopThemeSong(); // Ensure the theme song stops
+    super.dispose();
+  }
+
+  Future<void> _playThemeSong() async {
+    // Play the theme song in a loop
+    await _themeAudioPlayer.setSource(AssetSource('audio/theme_song.mp3'));
+    _themeAudioPlayer.setReleaseMode(ReleaseMode.loop); // Loop the audio
+    await _themeAudioPlayer.resume();
+  }
+
+  Future<void> _stopThemeSong() async {
+    // Stop the theme song immediately
+    await _themeAudioPlayer.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Background image
-          Positioned(
-            top: -screenHeight * 0.1, // Move image up by 20% of the screen height
-            left: -screenHeight * 0.02,
-            right: 0,
-            bottom: 0,
-            child: Image.asset(
-              'assets/getstart1.jpg', // Updated background image
-              fit: BoxFit.cover,
-            ),
-          ),
-          // Rounded rectangle with text
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              width: screenWidth,
-              height: screenHeight * 0.35, // Adjusted height to fit content
-              decoration: BoxDecoration(
-                color: Colors.white, // Dark blue color for the rounded rectangle
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Enjoy the jungle life and\nget to know wildlife\nanimals with ',
-                      style: TextStyle(
-                        fontFamily: 'Lexend',
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    RichText(
-                      text: const TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'WildWatch.',
-                            style: TextStyle(
-                              fontFamily: 'Lexend',
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.redAccent,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Scan the species of animals\n'
-                          'you’ve never met before.',
-                      style: TextStyle(
-                        fontFamily: 'ZillaSlab',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey.withOpacity(0.9),
-                      ),
-                    ),
-                    const Spacer(),
-                    // Get started button
-                    Center(
-                      child: SizedBox(
-                        width: 200, // Set a fixed width for the button
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigate to the SignUp screen
-                            Navigator.pushNamed(context, '/signin');
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.greenAccent, // Light blue button color
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 12.0), // Keep vertical padding consistent
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0), // Rounded button shape
-                            ),
-                          ),
-                          child: const Text(
-                            "Let's Start",
-                            style: TextStyle(
-                              fontSize: 16, // Adjusted font size
-                              fontWeight: FontWeight.bold, // Make the text bold
-                              color: Colors.black, // White text color
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+    return GestureDetector(
+      onTap: () async {
+        // Stop the theme song before navigating
+        await _stopThemeSong();
+        // Play the click effect globally
+        AudioManager().playClickEffect();
+        // Navigate to the SignIn screen
+        Navigator.pushNamed(context, '/signin');
+      },
+      child: Scaffold(
+        backgroundColor: Color(0xFFE3FF63), // Updated background color
+        body: Stack(
+          children: [
+            // Logo Positioned
+            Positioned(
+              left: 39, // X coordinate
+              top: 294, // Y coordinate
+              child: Center(
+                child: Image.asset(
+                  'assets/wildlogo.png', // Path to your logo image
+                  width: 312, // Updated width
+                  height: 191, // Updated height
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
-          ),
-        ],
+            // Animated Text Positioned
+            Positioned(
+              left: 113, // X coordinate
+              top: 567, // Y coordinate
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(0, _animation.value), // Move up and down
+                    child: Text(
+                      'Tap anywhere to start',
+                      style: TextStyle(
+                        fontFamily: 'Minecraft', // Use the Minecraft font
+                        fontSize: 15, // Updated font size
+                        color: Colors.grey.withOpacity(0.7), // Gray color with 59% opacity
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
