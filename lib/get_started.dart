@@ -70,8 +70,8 @@ class _GetStartedScreenState extends State<GetStartedScreen>
           children: [
             // Logo Positioned
             Positioned(
-              left: 39, // X coordinate
-              top: 294, // Y coordinate
+              left: 45, // X coordinate
+              top: 300, // Y coordinate
               child: Center(
                 child: Image.asset(
                   'assets/wildlogo.png', // Path to your logo image
