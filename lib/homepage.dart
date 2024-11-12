@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // For SystemUiOverlayStyle
 import 'edit_profile.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -6,10 +7,14 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ensure the status bar icons match the background
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Fully transparent to match the background
+      statusBarIconBrightness: Brightness.dark, // Dark icons for light background
+      statusBarBrightness: Brightness.light, // For iOS devices
+    ));
+
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -23,7 +28,7 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   height: 65,
                   decoration: const BoxDecoration(
-                    color: Colors.black, // Updated navigation bar color
+                    color: Colors.black, // Navigation bar background color
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
@@ -132,9 +137,6 @@ class WelcomeBanner extends StatelessWidget {
   }
 }
 
-
-
-
 class YourHistoryCard extends StatelessWidget {
   const YourHistoryCard({super.key});
 
@@ -191,6 +193,9 @@ class YourHistoryCard extends StatelessWidget {
     );
   }
 }
+
+// DiscoverSection and other dependent widgets remain unchanged
+
 
 
 // Discover section with a horizontal row of categories
