@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'scaninfo.dart'; // Import the ScanInfoScreen interface
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
@@ -32,7 +33,7 @@ class _ScanScreenState extends State<ScanScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center, // Center vertically
                     children: [
-                      // Close Button (Moved to the right)
+                      // Close Button
                       IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: () {
@@ -192,7 +193,13 @@ class _ScanScreenState extends State<ScanScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          // Handle Scan action
+                          // Navigate to ScanInfoScreen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ScanInfoScreen(),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFCDEB45), // Button color

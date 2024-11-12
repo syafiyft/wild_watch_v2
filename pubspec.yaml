@@ -10,6 +10,7 @@ environment:
 dependencies:
 
   audioplayers: ^6.1.0
+  path_provider: ^2.0.12
 
   flutter:
     sdk: flutter
@@ -60,3 +61,7 @@ flutter:
     - assets/audio/theme_song.mp3
     - assets/audio/click_effect2.mp3
     - assets/pandascan.png
+    - assets/mainpanda.png
+    - assets/panda_1.png
+    - assets/panda_2.png
+    - assets/panda_3.png
