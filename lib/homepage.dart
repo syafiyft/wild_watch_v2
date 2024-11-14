@@ -114,6 +114,7 @@ class WelcomeBanner extends StatelessWidget {
             text: const TextSpan(
               text: 'Welcome, ',
               style: TextStyle(
+                fontFamily: 'Minecraft', // Use Minecraft font
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -122,6 +123,7 @@ class WelcomeBanner extends StatelessWidget {
                 TextSpan(
                   text: 'Syafiy!',
                   style: TextStyle(
+                    fontFamily: 'Minecraft', // Use Minecraft font
                     color: Colors.red, // Username in red
                   ),
                 ),
@@ -130,7 +132,10 @@ class WelcomeBanner extends StatelessWidget {
           ),
           const Text(
             'Discover the wilderness today!',
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(
+              fontFamily: 'Minecraft', // Use Minecraft font
+              fontSize: 14,
+            ),
           ),
           const SizedBox(height: 16),
           const YourHistoryCard(),
