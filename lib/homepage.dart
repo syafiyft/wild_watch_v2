@@ -228,7 +228,7 @@ class DiscoverSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Discover',
+                'Categories',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Text('See all'),
@@ -240,9 +240,9 @@ class DiscoverSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             DiscoverCard(label: 'Birds', iconPath: 'assets/birds.png', backgroundColor: Color(0xFFFF2257)),
-            DiscoverCard(label: 'Carnivore', iconPath: 'assets/carnivore.png', backgroundColor: Color(0xFFFFCF23)),
-            DiscoverCard(label: 'Herbivore', iconPath: 'assets/herbivore.png', backgroundColor: Color(0xFFA3EE89)),
-            DiscoverCard(label: 'Sea Fish', iconPath: 'assets/seafish.png', backgroundColor: Color(0xFF1AACFF)),
+            DiscoverCard(label: 'Mammals', iconPath: 'assets/carnivore.png', backgroundColor: Color(0xFFFFCF23)),
+            DiscoverCard(label: 'Reptiles', iconPath: 'assets/herbivore.png', backgroundColor: Color(0xFFA3EE89)),
+            DiscoverCard(label: 'Fish', iconPath: 'assets/seafish.png', backgroundColor: Color(0xFF1AACFF)),
           ],
         ),
       ],
