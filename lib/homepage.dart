@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'scan.dart'; // Import the ScanScreen file
 import 'discover.dart'; // Import the DiscoverScreen file
+import 'birds.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -219,10 +220,10 @@ class DiscoverSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -235,14 +236,47 @@ class DiscoverSection extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            DiscoverCard(label: 'Birds', iconPath: 'assets/birds.png', backgroundColor: Color(0xFFFF2257)),
-            DiscoverCard(label: 'Mammals', iconPath: 'assets/carnivore.png', backgroundColor: Color(0xFFFFCF23)),
-            DiscoverCard(label: 'Reptiles', iconPath: 'assets/herbivore.png', backgroundColor: Color(0xFFA3EE89)),
-            DiscoverCard(label: 'Fish', iconPath: 'assets/seafish.png', backgroundColor: Color(0xFF1AACFF)),
+            DiscoverCard(
+              label: 'Birds',
+              iconPath: 'assets/birds.png',
+              backgroundColor: const Color(0xFFFF2257),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BirdsScreen(), // Navigate to birds.dart
+                  ),
+                );
+              },
+            ),
+            DiscoverCard(
+              label: 'Mammals',
+              iconPath: 'assets/carnivore.png',
+              backgroundColor: const Color(0xFFFFCF23),
+              onTap: () {
+                // Add navigation for mammals screen here
+              },
+            ),
+            DiscoverCard(
+              label: 'Reptiles',
+              iconPath: 'assets/herbivore.png',
+              backgroundColor: const Color(0xFFA3EE89),
+              onTap: () {
+                // Add navigation for reptiles screen here
+              },
+            ),
+            DiscoverCard(
+              label: 'Fish',
+              iconPath: 'assets/seafish.png',
+              backgroundColor: const Color(0xFF1AACFF),
+              onTap: () {
+                // Add navigation for fish screen here
+              },
+            ),
           ],
         ),
       ],
@@ -250,37 +284,43 @@ class DiscoverSection extends StatelessWidget {
   }
 }
 
-// DiscoverCard widget displaying category cards
+
 class DiscoverCard extends StatelessWidget {
   final String label;
   final String iconPath;
   final Color backgroundColor;
+  final VoidCallback onTap; // Add a callback for navigation
 
   const DiscoverCard({
     super.key,
     required this.label,
     required this.iconPath,
     required this.backgroundColor,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(8),
+    return GestureDetector(
+      onTap: onTap, // Call the navigation function when tapped
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.all(12),
+            child: Image.asset(iconPath, width: 50, height: 50),
           ),
-          padding: const EdgeInsets.all(12),
-          child: Image.asset(iconPath, width: 50, height: 50),
-        ),
-        const SizedBox(height: 8),
-        Text(label),
-      ],
+          const SizedBox(height: 8),
+          Text(label),
+        ],
+      ),
     );
   }
 }
+
 
 // Recent Animals section with scrollable rows and columns using existing assets
 class RecentAnimalsSection extends StatelessWidget {
