@@ -48,22 +48,44 @@ class ScanInfoScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Animal Type
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF57FB3D), // Color for herbivore type
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Text(
-                      'Herbivore',
-                      style: TextStyle(
-                        fontFamily: 'Minecraft',
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Herbivore Label
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Colors.black, // Black background for herbivore
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          'Herbivore',
+                          style: TextStyle(
+                            fontFamily: 'Minecraft',
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF57FB3D), // Green text color
+                          ),
+                        ),
                       ),
-                    ),
+                      // Endangered Label
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF80D63), // Endangered label color
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          'Endangered',
+                          style: TextStyle(
+                            fontFamily: 'Minecraft',
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // White text color
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 8),
 
@@ -155,20 +177,20 @@ class ScanInfoScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/panda_1.png',
-                        width: 110, // Enlarged width
-                        height: 110, // Enlarged height
+                        width: 100, // Enlarged width
+                        height: 100, // Enlarged height
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
                         'assets/panda_2.png',
-                        width: 110, // Enlarged width
-                        height: 110, // Enlarged height
+                        width: 100, // Enlarged width
+                        height: 100, // Enlarged height
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
                         'assets/panda_3.png',
-                        width: 110, // Enlarged width
-                        height: 110, // Enlarged height
+                        width: 100, // Enlarged width
+                        height: 100, // Enlarged height
                         fit: BoxFit.cover,
                       ),
                     ],

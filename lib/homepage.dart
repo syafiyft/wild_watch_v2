@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'scan.dart'; // Import the ScanScreen file
-import 'edit_profile.dart';
+import 'discover.dart'; // Import the DiscoverScreen file
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   child: BottomNavigationBar(
-                    currentIndex: 0,
+                    currentIndex: 0, // Set Home tab as default
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     selectedItemColor: Colors.redAccent.withOpacity(0.9),
@@ -55,16 +55,24 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ],
                     onTap: (index) {
-                      if (index == 1) {
-                        // Navigate to ScanScreen when the Scan button is clicked
+                      if (index == 0) {
+                        // Navigate to HomeScreen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MyHomePage()),
+                        );
+                      } else if (index == 1) {
+                        // Navigate to ScanScreen
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const ScanScreen()),
                         );
-                      } else if (index == 0) {
-                        // Navigate back to HomeScreen (or handle Home tap if needed)
                       } else if (index == 2) {
-                        // Add logic for Discover button if necessary
+                        // Navigate to DiscoverScreen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DiscoverScreen()),
+                        );
                       }
                     },
                   ),
@@ -79,7 +87,6 @@ class MyHomePage extends StatelessWidget {
 }
 
 // HomeScreen and other dependent widgets
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
