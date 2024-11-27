@@ -7,10 +7,10 @@ class SeeAllScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Animal categories with image paths and background colors
     final List<Map<String, dynamic>> categories = [
-      {"label": "Birds", "image": "assets/flams_1.png", "color": Colors.red[300]},
-      {"label": "Mammals", "image": "assets/lions_1.png", "color": Colors.yellow[300]},
-      {"label": "Reptiles", "image": "assets/crocs_1.png", "color": Colors.green[300]},
-      {"label": "Fish", "image": "assets/shark_2.png", "color": Colors.blue[300]},
+      {"label": "Birds", "image": "assets/flams1.png", "color": Colors.red[300]},
+      {"label": "Mammals", "image": "assets/lions1.png", "color": Colors.yellow[300]},
+      {"label": "Reptiles", "image": "assets/crocs1.png", "color": Colors.green[300]},
+      {"label": "Fish", "image": "assets/shark2.png", "color": Colors.blue[300]},
       {"label": "Amphibians", "image": "assets/frogs.png", "color": Colors.purple[200]},
       {"label": "Insects", "image": "assets/bees.png", "color": Colors.pink[200]},
       {"label": "Arachnids", "image": "assets/spiders.png", "color": Colors.cyan[200]},

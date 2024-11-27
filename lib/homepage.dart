@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'scan.dart'; // Import the ScanScreen file
 import 'discover.dart'; // Import the DiscoverScreen file
 import 'birds.dart';
+import 'see_all.dart'; // Import the SeeAllScreen file
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -211,10 +212,6 @@ class YourHistoryCard extends StatelessWidget {
 }
 
 // DiscoverSection and other dependent widgets remain unchanged
-
-
-
-// Discover section with a horizontal row of categories
 class DiscoverSection extends StatelessWidget {
   const DiscoverSection({super.key});
 
@@ -223,16 +220,32 @@ class DiscoverSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Categories',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              Text('See all'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SeeAllScreen()), // Navigate to SeeAllScreen
+                  );
+                },
+                child: const Text(
+                  'See all',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.redAccent, // Highlight text as clickable
+                    decoration: TextDecoration.underline, // Add underline for emphasis
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -283,6 +296,7 @@ class DiscoverSection extends StatelessWidget {
     );
   }
 }
+
 
 
 class DiscoverCard extends StatelessWidget {
