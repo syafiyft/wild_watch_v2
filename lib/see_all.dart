@@ -1,112 +1,99 @@
 import 'package:flutter/material.dart';
+import 'birds.dart'; // Import the birds.dart interface
 
 class SeeAllScreen extends StatelessWidget {
   const SeeAllScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Animal categories with image paths and background colors
-    final List<Map<String, dynamic>> categories = [
-      {"label": "Birds", "image": "assets/flams1.png", "color": Colors.red[300]},
-      {"label": "Mammals", "image": "assets/lions1.png", "color": Colors.yellow[300]},
-      {"label": "Reptiles", "image": "assets/crocs1.png", "color": Colors.green[300]},
-      {"label": "Fish", "image": "assets/shark2.png", "color": Colors.blue[300]},
-      {"label": "Amphibians", "image": "assets/frogs.png", "color": Colors.purple[200]},
-      {"label": "Insects", "image": "assets/bees.png", "color": Colors.pink[200]},
-      {"label": "Arachnids", "image": "assets/spiders.png", "color": Colors.cyan[200]},
-      {"label": "Crustaceans", "image": "assets/crabs.png", "color": Colors.pink[100]},
+    // Categories data
+    final categories = [
+      {"label": "Birds", "icon": "assets/flams1.png", "color": Colors.redAccent, "route": const BirdsScreen()},
+      {"label": "Mammals", "icon": "assets/lions1.png", "color": Colors.amber, "route": null},
+      {"label": "Reptiles", "icon": "assets/crocs1.png", "color": Colors.green, "route": null},
+      {"label": "Fish", "icon": "assets/shark2.png", "color": Colors.blueAccent, "route": null},
+      {"label": "Amphibians", "icon": "assets/frogs.png", "color": Colors.purpleAccent, "route": null},
+      {"label": "Insects", "icon": "assets/bees.png", "color": Colors.pinkAccent, "route": null},
+      {"label": "Arachnids", "icon": "assets/spiders.png", "color": Colors.lightBlueAccent, "route": null},
+      {"label": "Crustaceans", "icon": "assets/crabs.png", "color": Colors.orangeAccent, "route": null},
     ];
 
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // AppBar with back button and title
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  // Back button
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_back, color: Colors.black),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+      appBar: AppBar(
+        title: const Text(
+          "Categories",
+          style: TextStyle(
+            fontFamily: 'Minecraft', // Use Minecraft font for consistency
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Navigate back
+          },
+        ),
+      ),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(16.0),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // Two categories per row
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+        ),
+        itemCount: categories.length, // Total number of categories
+        itemBuilder: (context, index) {
+          final category = categories[index];
+          return GestureDetector(
+            onTap: () {
+              if (category["route"] != null) {
+                // Navigate to the corresponding screen if a route is defined
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => category["route"] as Widget),
+                );
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: category["color"] as Color,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
                   ),
-                  const SizedBox(width: 16),
-                  // Title
-                  const Text(
-                    'Categories',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    category["icon"] as String,
+                    height: 64,
+                    fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    category["label"] as String,
+                    style: const TextStyle(
                       fontFamily: 'Minecraft',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
-            // Scrollable grid for animal categories
-            Expanded(
-              child: GridView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Two columns
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  final category = categories[index];
-                  return GestureDetector(
-                    onTap: () {
-                      // Implement category-specific navigation
-                      print('Tapped on ${category["label"]}');
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: category["color"],
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset(
-                                category["image"],
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            category["label"],
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Minecraft',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
