@@ -1,6 +1,3 @@
-Here’s a sample `README.md` file for your **WildWatch** project:
-
----
 
 # 🐾 WildWatch: AI-Powered Wildlife Explorer
 
