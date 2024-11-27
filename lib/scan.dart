@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'scaninfo.dart'; // Import the ScanInfoScreen interface
+import 'result.dart'; // Import the ResultScreen interface
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
@@ -24,14 +24,14 @@ class _ScanScreenState extends State<ScanScreen> {
               children: [
                 // Top AppBar Section
                 Container(
-                  height: 100, // Increase height for better vertical centering
+                  height: 100,
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center, // Center vertically
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // Close Button
                       IconButton(
@@ -49,7 +49,7 @@ class _ScanScreenState extends State<ScanScreen> {
                   margin: const EdgeInsets.symmetric(horizontal: 16.0),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(30), // Updated radius to 30
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
                     children: [
@@ -65,9 +65,9 @@ class _ScanScreenState extends State<ScanScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 12.0),
                             decoration: BoxDecoration(
                               color: isScanSelected
-                                  ? const Color(0xFF9FC742) // Highlighted green for "Scan"
+                                  ? const Color(0xFF9FC742)
                                   : Colors.transparent,
-                              borderRadius: BorderRadius.circular(30), // Updated radius to 30
+                              borderRadius: BorderRadius.circular(30),
                             ),
                             child: const Center(
                               child: Text(
@@ -97,8 +97,8 @@ class _ScanScreenState extends State<ScanScreen> {
                             decoration: BoxDecoration(
                               color: isScanSelected
                                   ? Colors.transparent
-                                  : const Color(0xFFCDEB45), // Highlighted green for "Upload"
-                              borderRadius: BorderRadius.circular(30), // Updated radius to 30
+                                  : const Color(0xFFCDEB45),
+                              borderRadius: BorderRadius.circular(30),
                             ),
                             child: const Center(
                               child: Text(
@@ -144,7 +144,7 @@ class _ScanScreenState extends State<ScanScreen> {
 
                       // Camera Calibrating Text
                       const Positioned(
-                        bottom: 160, // Adjusted position (moved up by 20%)
+                        bottom: 160,
                         left: 0,
                         right: 0,
                         child: Center(
@@ -171,14 +171,14 @@ class _ScanScreenState extends State<ScanScreen> {
               left: 0,
               right: 0,
               child: Container(
-                color: Colors.white, // White background under torch and Scan button
+                color: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                 child: Row(
                   children: [
                     // Torch Icon with White Background
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white, // White background
+                        color: Colors.white,
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.black, width: 2),
                       ),
@@ -193,16 +193,16 @@ class _ScanScreenState extends State<ScanScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          // Navigate to ScanInfoScreen
+                          // Navigate to ResultScreen
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const ScanInfoScreen(),
+                              builder: (context) => const ResultScreen(),
                             ),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFCDEB45), // Button color
+                          backgroundColor: const Color(0xFFCDEB45),
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
